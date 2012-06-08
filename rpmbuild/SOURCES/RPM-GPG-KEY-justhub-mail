@@ -1,0 +1,26 @@
+The following public key can be used to verify RPM packages
+downloaded from  http://justhub.org/el{5,6}  using 'rpm -K'
+if you have the GNU GPG package.
+Questions about this key should be sent to:
+
+    The Sirius Cybernetics Corporation <mail@justhub.org>
+
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: GnuPG v1.4.5 (GNU/Linux)
+
+mQENBE5r6PwBCACuA6W5CAKtUv7pqB9oBkIqi40QHIcdmKMzM5f/7jUj4X4wgD6b
+1xIS3AEBgqQFvrKE9rH7mQQ0EZvE7fIUEJJoo2t699M+4pRDHwJRNK2YQob+P0WN
+urLgM33929T6md+7JF4nOMEEwig4d8D4GGX58BMq7RM4LjjDXOu2wOp4r3SoFZiG
+WYDrxZffCN8NqgD6OFCenpbxi4VHTm2UixooEYHMJXeb+BIQSEk6atMDzaZO3Y+e
+ORbxCrrNiY7DL4TZU/HiN/d/I+9kcjO+wa53bwwP1LPbhcRx0RLpjACZNStJTTkM
+8es19mzOasoMTTkTO+q4YQLu/3jvlF1qxWa5ABEBAAG0LVRoZSBIYXNrZWxsIEh1
+YiBSZXBvc2l0b3J5IDxtYWlsQGp1c3RodWIub3JnPokBNgQTAQIAIAUCTmvo/AIb
+AwYLCQgHAwIEFQIIAwQWAgMBAh4BAheAAAoJEKOGKpoT+6QgtfAIAIKZooAKE0xy
+Ht6nGKoT0r3o7ot+r+0HkJYlkRk75RHLBWcOYscdTzrrgegcozLvSKdFjYGcuBZ2
+xnSro/ZhywshLmTAZpzmHawjjNml9Q7krTiXDIwcZGo7mMtwju7mHiOfGfEEnxom
+L0sP3efrN0/Qs/jyS/JXBO0KdBmZ7F91kk4oanYkUu4I4IJuThBFAUjppwtcX/3R
+GWkXZ9iIfTn8s0cm0tR8SRp6mcbO1MZdUtRqojzX3o39mNmUUZcHV51MxPcQxcJZ
+Rs8/3+ALOFvRl4sIz6uKdidJRAI30iU+rkAmxYSYXdTPaEe5IUhAiJVK86WTYOHZ
+OjbQufIYHWM=
+=BnM0
+-----END PGP PUBLIC KEY BLOCK-----

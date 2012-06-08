@@ -1,6 +1,6 @@
 Haskell for Enterprise Linux
 ============================
 
-This repository will hold the software and scripts
-for the justhub.org repository when they are ready
-for publication (in 2012Q1).
+This repository holds the software and scripts for
+maintaining the RPMs that make up a Haskell [Hub
+repository](justhub.org).

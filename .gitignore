@@ -1,0 +1,11 @@
+.project
+ji.txt
+*~
+dist
+build
+scripts
+tmp
+*-list.txt
+*.log
+batch.sh
+test

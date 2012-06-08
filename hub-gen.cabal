@@ -1,0 +1,32 @@
+Name:                   hub-gen
+Version:                1.0
+Copyright:              Chris Dornan, 2011-2012
+Maintainer:             Chris Dornan <chris@chrisdornan.com>
+Author:                 Chris Dornan <chris@chrisdornan.com>
+License:                BSD3
+License-file:           LICENSE
+Synopsis:               Hub repo generator
+Description:            This package builds the RPM repository for a
+                        Hub distrubion
+Stability:              Experimental
+Category:               Development, Distribution
+Homepage:               https://github.com/haskell-hub/hub-gen.git
+Build-type:             Simple
+Cabal-version:          >= 1.10
+
+Source-repository       head
+    type:               git
+    location:           git@github.com:haskell-hub/hub-gen.git
+
+Executable              hub-gen
+    Main-is:            hub-gen.hs
+    Build-depends:      base            >= 4.0 && < 5,
+                        containers,
+                        bytestring,
+                        unix,
+                        directory
+    Other-modules:      HubGen.CommandLine
+                        HubGen.Params
+                        HubGen.Package
+    GHC-options:        -Wall
+    Default-language:   Haskell2010
