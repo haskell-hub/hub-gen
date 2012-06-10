@@ -201,12 +201,13 @@ data HCV
     | HCV_7_2_1
     | HCV_7_2_2
     | HCV_7_4_1
-    | HCV_7_4_2_RC1
+    | HCV_7_4_2
+ -- | HCV_7_4_2_RC1
                                             deriving (Show,Eq,Ord,Enum,Bounded)
 
 realGHC :: HCV -> String
 realGHC hcv = case hcv of
-                 HCV_7_4_2_RC1 -> "7.4.1.20120508"
+              -- HCV_7_4_2_RC1 -> "7.4.1.20120508"
                  _             -> hcv2str hcv
 
 hcv2str :: HCV -> String
@@ -226,7 +227,8 @@ hcv2str hcv =
       HCV_7_2_1     -> "7.2.1"
       HCV_7_2_2     -> "7.2.2"
       HCV_7_4_1     -> "7.4.1"
-      HCV_7_4_2_RC1 -> "7.4.2-RC1"
+      HCV_7_4_2     -> "7.4.2"
+    --HCV_7_4_2_RC1 -> "7.4.2-RC1"
 
 data HPV
  -- = HPV_2009_2_0

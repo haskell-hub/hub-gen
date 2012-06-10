@@ -396,7 +396,7 @@ c014_hub pid = case pid of
                  HcPID _ hcv -> hcv >= HCV_7_4_1
                  HpPID _ hpv -> hpv >= HPV_2012_2_0_0
                  _           -> False
-
+                 
 
 --
 -- Spec File Template Filename Stems
