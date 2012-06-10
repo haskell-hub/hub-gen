@@ -1,6 +1,6 @@
 
 
-%global hub__local_rev      4
+%global hub__local_rev      5
 %global debug_package       %{nil}
 
 
@@ -17,7 +17,7 @@ Vendor:         %{hub__vendor}
 Packager:       %{hub__packager}
 Requires:       %{hub__vc_hc_dist}
 Requires:       %{hub__vc_hub}
-
+%{hub__requires_ci014}
 %{hub__requires_plug}
 
 
@@ -36,6 +36,7 @@ cat >${RPM_BUILD_ROOT}%{hub__ghc_hub} <<EOF
   <comnt>GHC %{hub__ghc}</comnt>
   <hcbin>%{hub__ghc_d}/bin</hcbin>
   <glbdb>%{hub__ghc_db}</glbdb>
+  %{hub__civrn}
 </hub>
 EOF
 

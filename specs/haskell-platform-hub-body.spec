@@ -1,6 +1,6 @@
 
 
-%global hub__local_rev      4
+%global hub__local_rev      5
 %global debug_package %{nil}
 
 
@@ -18,7 +18,7 @@ Packager:       %{hub__packager}
 Requires:       %{hub__vc_hp_dist}
 Requires:       %{hub__vc_hub}
 Requires:       %{hub__vc_hc}
-
+%{hub__requires_ci014}
 %{hub__requires_plug}
 
 
@@ -36,6 +36,7 @@ cat >${RPM_BUILD_ROOT}%{hub__hp_hub} <<EOF
   <comnt>Haskell Platform %{hub__hp}</comnt>
   <hcbin>%{hub__ghc_d}/bin</hcbin>
   <glbdb>%{hub__hp_db}</glbdb>
+  %{hub__civrn}
 </hub>
 EOF
 

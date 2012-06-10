@@ -18,6 +18,7 @@ repo=/hub/arch-repo
 
 usage() {
     printf "usage: $0 --help \n"
+    printf "       $0 --version\n"
     printf "       $0 --list \n"
     printf "       $0 --show-params  <package>\n"
     printf "       $0 --show-header  <package>\n"
@@ -119,6 +120,8 @@ fi
 show=0
 case $1 in
 --show-params|--show-header|--show-spec) show=1;;
+--version) hub-gen --version; exit 0;;
+--*) usage; exit 1;;
 esac
 
 if [ ${show} == 1 ]; then

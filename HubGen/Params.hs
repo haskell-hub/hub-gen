@@ -66,6 +66,8 @@ data Params = PMS
     , own_toolsPMS :: Bool      -- True => use /usr/hs tools
     , cid_versnPMS :: String    -- Cabal Install version
     , cid_tarblPMS :: FilePath  -- Cabal Install src tarball
+    , c14_versnPMS :: String    -- Cabal Install 0.14.x version
+    , c14_tarblPMS :: FilePath  -- Cabal Install 0.14.x src tarball
     , alx_versnPMS :: String    -- Alex          version
     , alx_tarblPMS :: FilePath  -- Alex          src tarball
     , hpy_versnPMS :: String    -- Happy         version
@@ -101,8 +103,10 @@ el_params (d,j) = PMS
     0                           -- (general revision)
     d
     True
-    cbi_vr
-    cbi_tb
+    cid_vr
+    cid_tb
+    c14_vr
+    c14_tb
     alx_vr
     alx_tb
     hpy_vr
@@ -138,8 +142,10 @@ fc_params (d,j) = PMS
     0                           -- (general revision)
     d
     False
-    cbi_vr
-    cbi_tb
+    cid_vr
+    cid_tb
+    c14_vr
+    c14_tb
     alx_vr
     alx_tb
     hpy_vr
@@ -157,16 +163,18 @@ fc_params (d,j) = PMS
 
 
 
-cbi_vr, cbi_tb, alx_vr, alx_tb, hpy_vr,
+cid_vr, cid_tb, c14_vr, c14_tb, alx_vr, alx_tb, hpy_vr,
                         hpy_tb, hub_vr, hub_tb, rpb_dr :: String
 
-cbi_vr =        "0.14.0"
-cbi_tb = printf "cabal-install-%s.tar.gz" cbi_vr
+cid_vr =        "0.10.2"
+cid_tb = printf "cabal-install-%s.tar.gz" cid_vr
+c14_vr =        "0.14.0"
+c14_tb = printf "cabal-install-%s.tar.gz" c14_vr
 alx_vr =        "3.0.2"
 alx_tb = printf "alex-%s.tar.gz"          alx_vr
 hpy_vr =        "1.18.9"
 hpy_tb = printf "happy-%s.tar.gz"         hpy_vr
-hub_vr =        "1.0.0"
+hub_vr =        "1.1.0"
 hub_tb = printf "hub-%s.tar.gz"           hub_vr
 rpb_dr =        "rpmbuild"
 

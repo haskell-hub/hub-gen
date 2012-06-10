@@ -91,6 +91,7 @@ data FxPkgID
     | Haskell_hub
     | Haskell_hub_usr_bin
     | Haskell_hub_cabal_install
+    | Haskell_hub_cabal_install_014
     | Haskell_hub_alex
     | Haskell_hub_happy
     | Haskell_hub_gcc
@@ -128,6 +129,8 @@ data FxRpmMacro
     | HUB__repo_package
     | HUB__cid_version
     | HUB__cid_tarball
+    | HUB__c14_version
+    | HUB__c14_tarball
     | HUB__alx_version
     | HUB__alx_tarball
     | HUB__hpy_version
@@ -149,6 +152,7 @@ data VcRpmMacro
     | HUB__vc_hub
     | HUB__vc_ubin
     | HUB__vc_cabal
+    | HUB__vc_cabal_014
     | HUB__vc_alex
     | HUB__vc_happy
     | HUB__vc_gcc
@@ -165,6 +169,7 @@ data CpRpmMacro
     | HUB__hp
     | HUB__old_packages
     | HUB__libedit
+    | HUB__hub_ci014
                                             deriving (Eq,Ord,Bounded,Enum,Show)
 
 
@@ -278,6 +283,8 @@ gen_fx_mac pms pid frm =
           HUB__repo_package     ->              repo_pakgPMS pms
           HUB__cid_version      ->              cid_versnPMS pms
           HUB__cid_tarball      ->              cid_tarblPMS pms
+          HUB__c14_version      ->              c14_versnPMS pms
+          HUB__c14_tarball      ->              c14_tarblPMS pms
           HUB__alx_version      ->              alx_versnPMS pms
           HUB__alx_tarball      ->              alx_tarblPMS pms
           HUB__hpy_version      ->              hpy_versnPMS pms
@@ -313,6 +320,7 @@ gen_vc_mac pms pid vrm =
           HUB__vc_hub           -> vcm   Haskell_hub                pr_vrsionPMS
           HUB__vc_ubin          -> vcm   Haskell_hub_usr_bin        pr_vrsionPMS
           HUB__vc_cabal         -> vcm   Haskell_hub_cabal_install  tl_vrsionPMS
+          HUB__vc_cabal_014     -> vcm   Haskell_hub_cabal_install_014 tl_vrsionPMS
           HUB__vc_alex          -> vcm   Haskell_hub_alex           tl_vrsionPMS
           HUB__vc_happy         -> vcm   Haskell_hub_happy          tl_vrsionPMS
           HUB__vc_gcc           -> vcm_g Haskell_hub_gcc            gc_vrsionPMS
@@ -354,6 +362,7 @@ gen_cp_mac _ pid crm =
           HUB__hp               -> fx_nil   hp_s
           HUB__old_packages     -> fx_nul $ flg op
           HUB__libedit          -> fx_nul $ flg le
+          HUB__hub_ci014        -> flg    $ c014_hub pid
       where
         flg b      = if b then "1" else ""
 
@@ -381,6 +390,12 @@ gen_cp_mac _ pid crm =
                        FxPID _     -> (True ,Left  minBound)
                        HcPID _ hcv -> (False,Left  hcv     )
                        HpPID _ hpv -> (False,Right hpv     )
+
+c014_hub :: PkgID -> Bool
+c014_hub pid = case pid of
+                 HcPID _ hcv -> hcv >= HCV_7_4_1
+                 HpPID _ hpv -> hpv >= HPV_2012_2_0_0
+                 _           -> False
 
 
 --
