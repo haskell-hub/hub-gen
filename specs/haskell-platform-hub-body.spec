@@ -1,6 +1,6 @@
 
 
-%global hub__local_rev      5
+%global hub__local_rev      6
 %global debug_package %{nil}
 
 
@@ -40,20 +40,6 @@ cat >${RPM_BUILD_ROOT}%{hub__hp_hub} <<EOF
 </hub>
 EOF
 
-
-%post
-if [ ! -f %{hub__ghc_lib}/hub-platform-install ]; then
-    touch %{hub__ghc_lib}/hub-platform-install
-    mv %{hub__ghc_pkg_db} %{hub__ghc_pkg_db}-orig
-    ln -s %{hub__hp_db} %{hub__ghc_pkg_db}
-fi
-
-%postun
-if [   -f %{hub__ghc_lib}/hub-platform-install ]; then
-    rm -f %{hub__ghc_lib}/hub-platform-install
-    rm -f %{hub__ghc_pkg_db}
-    mv %{hub__ghc_pkg_db}-orig %{hub__ghc_pkg_db}
-fi
 
 %files
 %defattr(-,root,root,-)

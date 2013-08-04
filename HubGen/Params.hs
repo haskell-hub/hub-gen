@@ -174,7 +174,7 @@ alx_vr =        "3.0.2"
 alx_tb = printf "alex-%s.tar.gz"          alx_vr
 hpy_vr =        "1.18.9"
 hpy_tb = printf "happy-%s.tar.gz"         hpy_vr
-hub_vr =        "1.1.0"
+hub_vr =        "1.2.0"
 hub_tb = printf "hub-%s.tar.gz"           hub_vr
 rpb_dr =        "rpmbuild"
 
@@ -202,12 +202,15 @@ data HCV
     | HCV_7_2_2
     | HCV_7_4_1
     | HCV_7_4_2
+    | HCV_7_6_1
+ -- | HCV_7_6_1_RC1
  -- | HCV_7_4_2_RC1
                                             deriving (Show,Eq,Ord,Enum,Bounded)
 
 realGHC :: HCV -> String
 realGHC hcv = case hcv of
               -- HCV_7_4_2_RC1 -> "7.4.1.20120508"
+              -- HCV_7_6_1_RC1 -> "7.6.0.20120810"
                  _             -> hcv2str hcv
 
 hcv2str :: HCV -> String
@@ -228,6 +231,8 @@ hcv2str hcv =
       HCV_7_2_2     -> "7.2.2"
       HCV_7_4_1     -> "7.4.1"
       HCV_7_4_2     -> "7.4.2"
+      HCV_7_6_1     -> "7.6.1"
+    --HCV_7_6_1_RC1 -> "7.6.1-RC1"
     --HCV_7_4_2_RC1 -> "7.4.2-RC1"
 
 data HPV

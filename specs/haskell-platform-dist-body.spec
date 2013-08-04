@@ -1,6 +1,6 @@
 
 
-%global hub__local_rev      4
+%global hub__local_rev      6
 %global debug_package %{nil}
 
 
@@ -42,7 +42,6 @@ distilled from Hackage.
 
 
 %build
-
 PATH=/usr/hs/gcc/bin:/usr/hs/binutils/bin:${PATH}
 HUB=%{hub__ghc} GHC_PACKAGE_PATH=%{hub__ghc_db} ./configure --prefix=%{hub__hp_d}
 HUB=%{hub__ghc} GHC_PACKAGE_PATH=%{hub__ghc_db} make
@@ -56,12 +55,15 @@ mv ${RPM_BUILD_ROOT}/load ${RPM_BUILD_ROOT}%{hub__hp_d}
 
 %post
 mkdir -p %{hub__db_d}
+rm -rf %{hub__hp_db}
 cp -a %{hub__ghc_db} %{hub__hp_db}
 cd %{hub__hp_d}/load
 for f in *; do %{hub__ghc_d}/bin/ghc-pkg -v0 --package-conf=%{hub__hp_db} update $f >/dev/null 2>&1; done
 
-%postun
-rm -rf %{hub__hp_db}
+
+#%postun                    # not safe
+#rm -rf %{hub__hp_db}       # updates will execute these scripts AFTER running the
+                            # %post scipts of the incomming RPMs -- DOH!
 
 
 %files

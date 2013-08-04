@@ -1,6 +1,6 @@
 
 
-%global hub__local_rev      5
+%global hub__local_rev      7
 %global debug_package       %{nil}
 
 
@@ -32,7 +32,6 @@ packages on a per-project basis is also provided.
 
 
 %prep
-
 %setup -q -n hub-%{hub__hub_version}
 %{hub__setup}
 %hub__verify_source %{hub__hub_tarball}
@@ -45,10 +44,7 @@ make
 %install
 make DESTDIR=${RPM_BUILD_ROOT} install
 
-
-%post
-
-cd %{hub__bin}
+cd ${RPM_BUILD_ROOT}%{hub__bin}
 
 mk() { rm -f $1; ln -s hub $1; }
 
@@ -66,26 +62,9 @@ mk happy
 mk haddock
 
 
-%preun
-
-cd %{hub__bin}
-rm -f ghc
-rm -f ghci
-rm -f ghc-pkg
-rm -f hp2ps
-rm -f hpc
-rm -f hsc2hs
-rm -f runghc
-rm -f runhaskell
-rm -f cabal
-rm -f alex
-rm -f happy
-rm -f haddock
-
-
 %files
 %defattr(-,root,root,-)
-%{hub__bin}/hub
+%{hub__bin}
 /usr/share/man/man1/hub.1.gz
 /usr/share/man/man5/hub.5.gz
 
