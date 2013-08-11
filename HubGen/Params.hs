@@ -203,6 +203,8 @@ data HCV
     | HCV_7_4_1
     | HCV_7_4_2
     | HCV_7_6_1
+    | HCV_7_6_2
+    | HCV_7_6_3
  -- | HCV_7_6_1_RC1
  -- | HCV_7_4_2_RC1
                                             deriving (Show,Eq,Ord,Enum,Bounded)
@@ -232,6 +234,8 @@ hcv2str hcv =
       HCV_7_4_1     -> "7.4.1"
       HCV_7_4_2     -> "7.4.2"
       HCV_7_6_1     -> "7.6.1"
+      HCV_7_6_2     -> "7.6.2"
+      HCV_7_6_3     -> "7.6.3"
     --HCV_7_6_1_RC1 -> "7.6.1-RC1"
     --HCV_7_4_2_RC1 -> "7.4.2-RC1"
 
