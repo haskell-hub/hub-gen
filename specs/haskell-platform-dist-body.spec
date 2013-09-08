@@ -38,7 +38,7 @@ distilled from Hackage.
 %prep
 %setup -q -n hp-%{hub__hp}
 %{hub__setup}
-%hub__verify_source %{hub__hub_tarball}
+
 
 
 %build

@@ -92,6 +92,8 @@ data FxPkgID
     | Haskell_hub_usr_bin
     | Haskell_hub_cabal_install
     | Haskell_hub_cabal_install_014
+    | Haskell_hub_cabal_install_116
+    | Haskell_hub_cabal_install_118
     | Haskell_hub_alex
     | Haskell_hub_happy
     | Haskell_hub_gcc
@@ -131,6 +133,10 @@ data FxRpmMacro
     | HUB__cid_tarball
     | HUB__c14_version
     | HUB__c14_tarball
+    | HUB__c16_version
+    | HUB__c16_tarball
+    | HUB__c18_version
+    | HUB__c18_tarball
     | HUB__alx_version
     | HUB__alx_tarball
     | HUB__hpy_version
@@ -153,6 +159,8 @@ data VcRpmMacro
     | HUB__vc_ubin
     | HUB__vc_cabal
     | HUB__vc_cabal_014
+    | HUB__vc_cabal_116
+    | HUB__vc_cabal_118
     | HUB__vc_alex
     | HUB__vc_happy
     | HUB__vc_gcc
@@ -170,8 +178,9 @@ data CpRpmMacro
     | HUB__old_packages
     | HUB__libedit
     | HUB__hub_ci014
+    | HUB__hub_ci116
+    | HUB__hub_ci118
                                             deriving (Eq,Ord,Bounded,Enum,Show)
-
 
 
 package_live :: Params -> PkgID -> Bool
@@ -285,6 +294,10 @@ gen_fx_mac pms pid frm =
           HUB__cid_tarball      ->              cid_tarblPMS pms
           HUB__c14_version      ->              c14_versnPMS pms
           HUB__c14_tarball      ->              c14_tarblPMS pms
+          HUB__c16_version      ->              c16_versnPMS pms
+          HUB__c16_tarball      ->              c16_tarblPMS pms
+          HUB__c18_version      ->              c18_versnPMS pms
+          HUB__c18_tarball      ->              c18_tarblPMS pms
           HUB__alx_version      ->              alx_versnPMS pms
           HUB__alx_tarball      ->              alx_tarblPMS pms
           HUB__hpy_version      ->              hpy_versnPMS pms
@@ -316,20 +329,22 @@ distPMS pms = printf "%d.%s" (gn_revisnPMS pms) (distroTag $ distribtnPMS pms)
 gen_vc_mac :: Params -> PkgID -> VcRpmMacro -> String
 gen_vc_mac pms pid vrm =
         case vrm of
-          HUB__vc_haskell_min   -> vcm   Haskell_min                hs_vrsionPMS
-          HUB__vc_hub           -> vcm   Haskell_hub                pr_vrsionPMS
-          HUB__vc_ubin          -> vcm   Haskell_hub_usr_bin        pr_vrsionPMS
-          HUB__vc_cabal         -> vcm   Haskell_hub_cabal_install  tl_vrsionPMS
-          HUB__vc_cabal_014     -> vcm   Haskell_hub_cabal_install_014 tl_vrsionPMS
-          HUB__vc_alex          -> vcm   Haskell_hub_alex           tl_vrsionPMS
-          HUB__vc_happy         -> vcm   Haskell_hub_happy          tl_vrsionPMS
-          HUB__vc_gcc           -> vcm_g Haskell_hub_gcc            gc_vrsionPMS
-          HUB__vc_binutils      -> vcm_b Haskell_hub_binutils       bu_vrsionPMS
-          HUB__vc_hc            -> vcm_h (HcPID True )              pr_vrsionPMS
-          HUB__vc_hc_dist       -> vcm_h (HcPID False)              hc_vrsionPMS
-          HUB__vc_hp            -> vcm_p (HpPID True )              pr_vrsionPMS
-          HUB__vc_hp_dist       -> vcm_p (HpPID False)              hp_vrsionPMS
-          HUB__vc_hp_current    -> vcm'  (HpPID True  hpc)          pr_vrsionPMS
+          HUB__vc_haskell_min   -> vcm   Haskell_min                     hs_vrsionPMS
+          HUB__vc_hub           -> vcm   Haskell_hub                     pr_vrsionPMS
+          HUB__vc_ubin          -> vcm   Haskell_hub_usr_bin             pr_vrsionPMS
+          HUB__vc_cabal         -> vcm   Haskell_hub_cabal_install       tl_vrsionPMS
+          HUB__vc_cabal_014     -> vcm   Haskell_hub_cabal_install_014   tl_vrsionPMS
+          HUB__vc_cabal_116     -> vcm   Haskell_hub_cabal_install_116   tl_vrsionPMS
+          HUB__vc_cabal_118     -> vcm   Haskell_hub_cabal_install_118   tl_vrsionPMS
+          HUB__vc_alex          -> vcm   Haskell_hub_alex                tl_vrsionPMS
+          HUB__vc_happy         -> vcm   Haskell_hub_happy               tl_vrsionPMS
+          HUB__vc_gcc           -> vcm_g Haskell_hub_gcc                 gc_vrsionPMS
+          HUB__vc_binutils      -> vcm_b Haskell_hub_binutils            bu_vrsionPMS
+          HUB__vc_hc            -> vcm_h (HcPID True )                   pr_vrsionPMS
+          HUB__vc_hc_dist       -> vcm_h (HcPID False)                   hc_vrsionPMS
+          HUB__vc_hp            -> vcm_p (HpPID True )                   pr_vrsionPMS
+          HUB__vc_hp_dist       -> vcm_p (HpPID False)                   hp_vrsionPMS
+          HUB__vc_hp_current    -> vcm'  (HpPID True  hpc)               pr_vrsionPMS
       where
         vcm_g       = vcm_t "gcc"
         vcm_b       = vcm_t "binutils"
@@ -363,6 +378,8 @@ gen_cp_mac _ pid crm =
           HUB__old_packages     -> fx_nul $ flg op
           HUB__libedit          -> fx_nul $ flg le
           HUB__hub_ci014        -> flg    $ c014_hub pid
+          HUB__hub_ci116        -> flg    $ c116_hub pid
+          HUB__hub_ci118        -> flg    $ c118_hub pid
       where
         flg b      = if b then "1" else ""
 
@@ -392,11 +409,28 @@ gen_cp_mac _ pid crm =
                        HpPID _ hpv -> (False,Right hpv     )
 
 c014_hub :: PkgID -> Bool
-c014_hub pid = case pid of
-                 HcPID _ hcv -> hcv >= HCV_7_4_1
-                 HpPID _ hpv -> hpv >= HPV_2012_2_0_0
-                 _           -> False
+c014_hub pid = not (c116_hub pid) &&
+    case pid of
+      HcPID _ hcv -> hcv >= HCV_7_4_1
+      HpPID _ hpv -> hpv >= HPV_2012_2_0_0
+      _           -> False
                  
+c116_hub :: PkgID -> Bool
+c116_hub pid = not (c118_hub pid) && 
+    case pid of
+      HcPID _ hcv -> hcv >= HCV_7_6_1
+      HpPID _ hpv -> hpv >= HPV_2013_2_0_0
+      _           -> False
+
+c118_hub :: PkgID -> Bool
+c118_hub _pid = False
+{-
+    case pid of
+      HcPID _ hcv -> hcv >= HCV_7_8_1
+      HpPID _ hpv -> hpv >= HPV_2014_2_0_0
+      _           -> False
+-}
+
 
 --
 -- Spec File Template Filename Stems

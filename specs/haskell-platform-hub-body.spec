@@ -19,6 +19,8 @@ Requires:       %{hub__vc_hp_dist}
 Requires:       %{hub__vc_hub}
 Requires:       %{hub__vc_hc}
 %{hub__requires_ci014}
+%{hub__requires_ci116}
+%{hub__requires_ci118}
 %{hub__requires_plug}
 
 

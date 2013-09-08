@@ -76,12 +76,24 @@
 %endif
 
 
+%global hub__civrn              %{nil}
 %if %{defined hub__hub_ci014}
 %global hub__requires_ci014     Requires: %{hub__vc_cabal_014}
 %global hub__civrn              <civrn>%{hub__c14_version}</civrn>
 %else
 %global hub__requires_ci014     %{nil}
-%global hub__civrn              %{nil}
+%endif
+%if %{defined hub__hub_ci016}
+%global hub__requires_ci016     Requires: %{hub__vc_cabal_016}
+%global hub__civrn              <civrn>%{hub__c16_version}</civrn>
+%else
+%global hub__requires_ci016     %{nil}
+%endif
+%if %{defined hub__hub_ci018}
+%global hub__requires_ci018     Requires: %{hub__vc_cabal_018}
+%global hub__civrn              <civrn>%{hub__c18_version}</civrn>
+%else
+%global hub__requires_ci018     %{nil}
 %endif
 
 %global hub__with_gcc           --with-gcc=%{hub__gcc_bin}/gcc

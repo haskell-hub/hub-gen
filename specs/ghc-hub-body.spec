@@ -18,6 +18,8 @@ Packager:       %{hub__packager}
 Requires:       %{hub__vc_hc_dist}
 Requires:       %{hub__vc_hub}
 %{hub__requires_ci014}
+%{hub__requires_ci116}
+%{hub__requires_ci118}
 %{hub__requires_plug}
 
 

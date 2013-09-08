@@ -68,6 +68,10 @@ data Params = PMS
     , cid_tarblPMS :: FilePath  -- Cabal Install src tarball
     , c14_versnPMS :: String    -- Cabal Install 0.14.x version
     , c14_tarblPMS :: FilePath  -- Cabal Install 0.14.x src tarball
+    , c16_versnPMS :: String    -- Cabal Install 0.16.x version
+    , c16_tarblPMS :: FilePath  -- Cabal Install 0.16.x src tarball
+    , c18_versnPMS :: String    -- Cabal Install 0.18.x version
+    , c18_tarblPMS :: FilePath  -- Cabal Install 0.18.x src tarball
     , alx_versnPMS :: String    -- Alex          version
     , alx_tarblPMS :: FilePath  -- Alex          src tarball
     , hpy_versnPMS :: String    -- Happy         version
@@ -107,6 +111,10 @@ el_params (d,j) = PMS
     cid_tb
     c14_vr
     c14_tb
+    c16_vr
+    c16_tb
+    c18_vr
+    c18_tb
     alx_vr
     alx_tb
     hpy_vr
@@ -146,6 +154,10 @@ fc_params (d,j) = PMS
     cid_tb
     c14_vr
     c14_tb
+    c16_vr
+    c16_tb
+    c18_vr
+    c18_tb
     alx_vr
     alx_tb
     hpy_vr
@@ -163,13 +175,17 @@ fc_params (d,j) = PMS
 
 
 
-cid_vr, cid_tb, c14_vr, c14_tb, alx_vr, alx_tb, hpy_vr,
-                        hpy_tb, hub_vr, hub_tb, rpb_dr :: String
+cid_vr, cid_tb, c14_vr, c14_tb, c16_vr, c16_tb, c18_vr, c18_tb, 
+    alx_vr, alx_tb, hpy_vr, hpy_tb, hub_vr, hub_tb, rpb_dr :: String
 
 cid_vr =        "0.10.2"
 cid_tb = printf "cabal-install-%s.tar.gz" cid_vr
 c14_vr =        "0.14.0"
 c14_tb = printf "cabal-install-%s.tar.gz" c14_vr
+c16_vr =        "1.16.0.2"
+c16_tb = printf "cabal-install-%s.tar.gz" c16_vr
+c18_vr =        "1.18.0.1"
+c18_tb = printf "cabal-install-%s.tar.gz" c18_vr
 alx_vr =        "3.0.2"
 alx_tb = printf "alex-%s.tar.gz"          alx_vr
 hpy_vr =        "1.18.9"
@@ -250,6 +266,8 @@ data HPV
     = HPV_2011_2_0_1
     | HPV_2011_4_0_0
     | HPV_2012_2_0_0
+    | HPV_2012_4_0_0
+    | HPV_2013_2_0_0
                                             deriving (Show,Eq,Ord,Enum,Bounded)
 
 hpv2str :: HPV -> String
@@ -271,6 +289,8 @@ hpv2strHCV hpv =
       HPV_2011_2_0_1    -> (,) "2011.2.0.1"        HCV_7_0_3
       HPV_2011_4_0_0    -> (,) "2011.4.0.0"        HCV_7_0_4
       HPV_2012_2_0_0    -> (,) "2012.2.0.0"        HCV_7_4_1
+      HPV_2012_4_0_0    -> (,) "2012.4.0.0"        HCV_7_4_2
+      HPV_2013_2_0_0    -> (,) "2013.2.0.0"        HCV_7_6_3
 
 
 
