@@ -1,6 +1,6 @@
 
 
-%global hub__local_rev          6
+%global hub__local_rev          9
 %global debug_package           %{nil}
 
 %global hub__exe                cabal-%{hub__c18_version}

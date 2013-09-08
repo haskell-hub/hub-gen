@@ -10,6 +10,8 @@
 
 module HubGen.Params
     ( params
+    
+    , Vrn
 
     , Params(..)
     , Distro(..)
@@ -40,13 +42,15 @@ params = f `fmap` distro
                   El6  -> el_params p
                   Fc16 -> fc_params p
                   Fc17 -> fc_params p
+                  Fc19 -> fc_params p
 
+
+type Vrn = Int
 
 
 --
 -- General Parameters
 --
-
 
 data Params = PMS
     { prog_namePMS :: String    -- programme name
@@ -54,14 +58,14 @@ data Params = PMS
     , repo_namePMS :: String    -- Name of repository
     , repo_url_PMS :: String    -- URL  of repository
     , hp_crrentPMS :: HPV       -- Current Haskell Platform being promoted
-    , hs_vrsionPMS :: Int       -- RPM vrn: Haskell          packages
-    , pr_vrsionPMS :: Int       -- RPM vrn: haskell-hub      packages
-    , tl_vrsionPMS :: Int       -- RPM vrn: Cabal Install    packages
-    , hc_vrsionPMS :: Int       -- RPM vrn: GHC              packages
-    , hp_vrsionPMS :: Int       -- RPM vrn: Haskell Platform packages
-    , gc_vrsionPMS :: Int       -- RPM vrn: GCC              packages
-    , bu_vrsionPMS :: Int       -- RPM vrn: binutils         packages
-    , gn_revisnPMS :: Int       -- RPM general revion: all   packages
+    , hs_vrsionPMS :: Vrn       -- RPM vrn: Haskell          packages
+    , pr_vrsionPMS :: Vrn       -- RPM vrn: haskell-hub      packages
+    , tl_vrsionPMS :: Vrn       -- RPM vrn: Cabal Install    packages
+    , hc_vrsionPMS :: Vrn       -- RPM vrn: GHC              packages
+    , hp_vrsionPMS :: Vrn       -- RPM vrn: Haskell Platform packages
+    , gc_vrsionPMS :: Vrn       -- RPM vrn: GCC              packages
+    , bu_vrsionPMS :: Vrn       -- RPM vrn: binutils         packages
+    , gn_revisnPMS :: Vrn       -- RPM general revion: all   packages
     , distribtnPMS :: Distro    -- El5, El6, FC16, etc
     , own_toolsPMS :: Bool      -- True => use /usr/hs tools
     , cid_versnPMS :: String    -- Cabal Install version
@@ -96,7 +100,7 @@ el_params (d,j) = PMS
     "justhub-release"
     "justhub"
     url
-    HPV_2012_2_0_0
+    HPV_2013_2_0_0
     1                           -- (Haskell)
     1                           -- (haskell-hub)
     1                           -- (Cabal Install)
@@ -140,14 +144,14 @@ fc_params (d,j) = PMS
     "justhub"
     url
     HPV_2012_2_0_0
-    1                           -- (Haskell)
-    1                           -- (haskell-hub)
-    1                           -- (Cabal Install)
-    1                           -- (GHC)
-    1                           -- (Haskell Platform)
-    (-1)                        -- (GCC)
-    (-1)                        -- (binutils)
-    0                           -- (general revision)
+    1                          -- (Haskell)
+    1                          -- (haskell-hub)
+    1                          -- (Cabal Install)
+    1                          -- (GHC)
+    1                          -- (Haskell Platform)
+    (-1)                       -- (GCC)
+    (-1)                       -- (binutils)
+    0                          -- (general revision)
     d
     False
     cid_vr
@@ -306,6 +310,7 @@ data Distro
     | El6               -- CentOS/SL/RHEL 6
     | Fc16              -- Fedora Core 16
     | Fc17              -- Fedora Core 16
+    | Fc19              -- Fedora Core 19
                                                                 deriving (Show)
 
 -- tag used to identify the ditro on RPM filenames, etc.
@@ -317,6 +322,7 @@ distroTag d =
           El6  -> "el6"
           Fc16 -> "fc16"
           Fc17 -> "fc17"
+          Fc19 -> "fc19"
 
 
 -- work out the local distro from /etc/redhat

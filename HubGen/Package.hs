@@ -196,6 +196,7 @@ package_live pms pid =
                   El6  -> False
                   Fc16 -> True
                   Fc17 -> True
+                  Fc19 -> True
 
 lu_pid :: PackageName -> Maybe PkgID
 lu_pid = flip Map.lookup package_name_map
