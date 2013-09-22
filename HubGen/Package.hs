@@ -177,6 +177,7 @@ data CpRpmMacro
     | HUB__hp
     | HUB__old_packages
     | HUB__libedit
+    | HUB__hub_ci010
     | HUB__hub_ci014
     | HUB__hub_ci116
     | HUB__hub_ci118
@@ -378,6 +379,7 @@ gen_cp_mac _ pid crm =
           HUB__hp               -> fx_nil   hp_s
           HUB__old_packages     -> fx_nul $ flg op
           HUB__libedit          -> fx_nul $ flg le
+          HUB__hub_ci010        -> flg    $ c010_hub pid
           HUB__hub_ci014        -> flg    $ c014_hub pid
           HUB__hub_ci116        -> flg    $ c116_hub pid
           HUB__hub_ci118        -> flg    $ c118_hub pid
@@ -409,8 +411,11 @@ gen_cp_mac _ pid crm =
                        HcPID _ hcv -> (False,Left  hcv     )
                        HpPID _ hpv -> (False,Right hpv     )
 
+c010_hub :: PkgID -> Bool
+c010_hub pid = not (c114_hub pid || c116_hub pid || c118_hub pid)
+                 
 c014_hub :: PkgID -> Bool
-c014_hub pid = not (c116_hub pid) &&
+c014_hub pid = not (c116_hub pid || c118_hub pid) &&
     case pid of
       HcPID _ hcv -> hcv >= HCV_7_4_1
       HpPID _ hpv -> hpv >= HPV_2012_2_0_0

@@ -9,6 +9,7 @@ Name:           %{hub__package_name}
 Version:        %{hub__hs_version}
 Release:        %{hub__local_rev}.%{hub__dist}
 Summary:        The Haskell Hub Distribution
+Source0:        haskell.tar.gz
 URL:            http://hub.justhub.org
 License:        BSD3
 Group:          %{hub__group}
@@ -53,11 +54,15 @@ This package includes the latest Haskell Platform:
 and places the Haskell Hub driver programs in /usr/bin.
 
 
+%prep
+%setup -q -n haskell
+
+
 %install
 
 # a little naughty, but...
 
-install -D /usr/hs/ghc/%{hub__ghc_current}/share/man/man1/ghc.1 ${RPM_BUILD_ROOT}/usr/share/man/man1/ghc.1
+install -D ghc.1.gz ${RPM_BUILD_ROOT}/usr/share/man/man1/ghc.1
 
 
 %files

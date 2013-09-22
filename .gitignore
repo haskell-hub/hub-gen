@@ -9,4 +9,3 @@ tmp
 *.log
 batch.sh
 test
-*.tar.gz

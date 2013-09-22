@@ -190,9 +190,9 @@ c16_vr =        "1.16.0.2"
 c16_tb = printf "cabal-install-%s.tar.gz" c16_vr
 c18_vr =        "1.18.0.1"
 c18_tb = printf "cabal-install-%s.tar.gz" c18_vr
-alx_vr =        "3.0.2"
+alx_vr =        "3.0.5"
 alx_tb = printf "alex-%s.tar.gz"          alx_vr
-hpy_vr =        "1.18.9"
+hpy_vr =        "1.18.10"
 hpy_tb = printf "happy-%s.tar.gz"         hpy_vr
 hub_vr =        "1.2.0"
 hub_tb = printf "hub-%s.tar.gz"           hub_vr
@@ -328,7 +328,7 @@ distroTag d =
 -- work out the local distro from /etc/redhat
 
 distros :: [(Int,Distro)]
-distros = [(5,El5),(6,El6),(16,Fc16),(17,Fc17)]
+distros = [(5,El5),(6,El6),(16,Fc16),(17,Fc17),(19,Fc19)]
                     -- supported releases of RHEL/CentOS/FC
                     --  (i,ds)
                     --  i  => release number found  in /etc/redhat_release

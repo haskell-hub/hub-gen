@@ -77,6 +77,12 @@
 
 
 %global hub__civrn              %{nil}
+%if %{defined hub__hub_ci010}
+%global hub__requires_ci010     Requires: %{hub__vc_cabal_010}
+%global hub__civrn              <civrn>%{hub__c10_version}</civrn>
+%else
+%global hub__requires_ci010     %{nil}
+%endif
 %if %{defined hub__hub_ci014}
 %global hub__requires_ci014     Requires: %{hub__vc_cabal_014}
 %global hub__civrn              <civrn>%{hub__c14_version}</civrn>
