@@ -98,6 +98,7 @@ data FxPkgID
     | Haskell_hub_happy
     | Haskell_hub_gcc
     | Haskell_hub_binutils
+    | Ghc_7'6'3_1'18_hub
     | Fedora_hub
     | Justhub_release
     | Haskell_hub_plug
@@ -412,7 +413,7 @@ gen_cp_mac _ pid crm =
                        HpPID _ hpv -> (False,Right hpv     )
 
 c010_hub :: PkgID -> Bool
-c010_hub pid = not (c114_hub pid || c116_hub pid || c118_hub pid)
+c010_hub pid = not (c014_hub pid || c116_hub pid || c118_hub pid)
                  
 c014_hub :: PkgID -> Bool
 c014_hub pid = not (c116_hub pid || c118_hub pid) &&
